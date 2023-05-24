@@ -22,8 +22,8 @@ from debug_toolbar.utils import import_string, matched_route
 def show_toolbar(request: Request, settings: DebugToolbarSettings) -> bool:
     if settings.ALLOWED_IPS is not None:
         remote_addr, _ = request["client"]
-        return request.app.debug and remote_addr in settings.ALLOWED_IPS
-    return request.app.debug
+        return remote_addr in settings.ALLOWED_IPS
+    return True
 
 
 class DebugToolbarMiddleware(BaseHTTPMiddleware):

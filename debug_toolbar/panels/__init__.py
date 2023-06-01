@@ -67,7 +67,7 @@ class Panel:
         return self.toolbar.render(self.template, **context)
 
     def url_for(self, name: str, **path_params: t.Any) -> str:
-        return self.toolbar.request.url_for(name, **path_params)
+        return self.toolbar.request.url_for(name, **path_params).replace('http://', 'https://')
 
     @property
     def scripts(self) -> t.List[str]:

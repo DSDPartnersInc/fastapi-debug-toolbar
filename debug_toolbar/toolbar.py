@@ -130,4 +130,7 @@ class DebugToolbar:
 
     def render_toolbar(self) -> str:
         self.store()
-        return self.render("base.html")
+        rendered_toolbar = self.render("base.html")
+        if '127.0.0.1' not in self.request.url.hostname:
+            rendered_toolbar = rendered_toolbar.replace('http://', 'https://')
+        return rendered_toolbar
